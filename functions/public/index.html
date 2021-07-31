@@ -1,0 +1,256 @@
+<!-- nodemon --exec firebase serve --only functions -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PMS3003</title>
+    <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="css/bootstrap-4.6.0-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/adminlte.min.css">
+    <link rel="stylesheet" href="/css/fontawesome-free/css/all.min.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+    <style>
+      body  {
+        background-image: url("images/bgimages.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      </style>
+</head>
+<body>
+  <header id="header" class="fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <div class="logo">
+                <img  src="images/favicon.png" width="40"  height="40">
+            </div>
+            <button class="navbar-toggler"
+                type="button" 
+                data-toggle="collapse" 
+                data-target="#navbarTogglerDemo02" 
+                aria-controls="navbarTogglerDemo02"
+                aria-expanded="false" 
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://iot-pms3003.web.app/">Homepage</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://iot-pms3003.web.app/moreinfo">Graph</a>
+                </li>
+                </ul>
+            </div>
+        </div>  
+    </nav>
+</header>
+  <style>
+    .line-button{
+      margin-top: 80px;
+    }
+    .line-buttonpm{
+      margin-top: 1px;
+      margin-bottom: 1px;
+    }
+    .footerdatatext {
+      height: 135px;
+    }
+    .whiteTextOverride{
+      color: white !important;
+    }
+    .indent{
+      text-indent: 10.5cm
+    }
+
+  </style>
+  <style>
+    .button {
+      border: 1px transparent;
+      -webkit-animation: glowing 1300ms infinite;
+      -moz-animation: glowing 1300ms infinite;
+      -o-animation: glowing 1300ms infinite;
+      animation: glowing 1300ms infinite;
+    }
+  
+    @keyframes glowing {
+      0% {
+        background-color: #fd1702;
+        box-shadow: 0 0 3px #fd1702;
+      }
+      50% {
+        background-color: #fd1702;
+        box-shadow: 0 0 15px #fd1702;
+      }
+      100% {
+        background-color: #fd1702;
+        box-shadow: 0 0 3px #fd1702;
+      }
+    }
+    .button1 {
+      border: 1px transparent;
+      -webkit-animation: glowing1 1300ms infinite;
+      -moz-animation: glowing1 1300ms infinite;
+      -o-animation: glowing1 1300ms infinite;
+      animation: glowing1 1300ms infinite;
+    }
+  
+    @keyframes glowing1 {
+      0% {
+        background-color: #28a745;
+        box-shadow: 0 0 3px #28a745;
+      }
+      50% {
+        background-color: #28a745;
+        box-shadow: 0 0 15px #28a745;
+      }
+      100% {
+        background-color: #28a745;
+        box-shadow: 0 0 3px #28a745;
+      }
+    }
+
+    .button2 {
+      border: 1px transparent;
+      -webkit-animation: glowing2 1300ms infinite;
+      -moz-animation: glowing2 1300ms infinite;
+      -o-animation: glowing2 1300ms infinite;
+      animation: glowing2 1300ms infinite;
+    }
+  
+    @keyframes glowing2 {
+      0% {
+        background-color: #dc3545;
+        box-shadow: 0 0 3px #dc3545;
+      }
+      50% {
+        background-color: #dc3545;
+        box-shadow: 0 0 15px #dc3545;
+      }
+      100% {
+        background-color: #dc3545;
+        box-shadow: 0 0 3px #dc3545;
+      }
+    }
+    .button3 {
+      border: 1px transparent;
+      -webkit-animation: glowing3 1300ms infinite;
+      -moz-animation: glowing3 1300ms infinite;
+      -o-animation: glowing3 1300ms infinite;
+      animation: glowing3 1300ms infinite;
+    }
+  
+    @keyframes glowing3 {
+      0% {
+        background-color: #007bff;
+        box-shadow: 0 0 3px #007bff;
+      }
+      50% {
+        background-color: #007bff;
+        box-shadow: 0 0 15px #007bff;
+      }
+      100% {
+        background-color: #007bff;
+        box-shadow: 0 0 3px #007bff;
+      }
+    }
+  </style>
+  <h5 class="d-flex justify-content-center line-button whiteTextOverride" >เว็บแอปตรวจสอบค่าฝุ่นละออง</h5>
+  <h5 class="d-flex justify-content-center whiteTextOverride" >และ </h5>
+  <h5 class="d-flex justify-content-center whiteTextOverride" >ควบคุมเครื่องกรองอากาศ</h5>
+  <h5 class="d-flex justify-content-center whiteTextOverride" >สถานะเครื่องกรองฝุ่น :  <font color="red" id="statuspm"> มีปัญหา </font></h5>
+    <div class="row" >
+        <div class="col-lg-3 col-6">
+          <!-- small box -->
+          <div id="addclassinfo" class="small-box bg-info">
+            <div class="inner footerdatatext">
+              <h3 id="pm25realtime"></h3>
+
+              <p>PM2.5 RealTime</p>
+              <p>(เกิน 51 µg./m3 ถือว่าเป็นอันตราย)</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-ios-infinite"></i>
+            </div>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+          <!-- small box -->
+          <div id="addclasssuccess"class="small-box bg-success">
+            <div class="inner footerdatatext">
+              <h3 id="persenrealtime"></h3>
+
+              <p>เทียบเป็นเปอร์เซ็น PM2.5</p>
+              <p>(เกิน 100% ถือว่าเป็นอันตราย)</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-pie-graph"></i>
+            </div>
+            <!-- <a href="#" class="small-box-footer"><font color="#259647"> / </font></a> -->
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+          <!-- small box -->
+          <div class="small-box bg-warning">
+            <div class="inner footerdatatext whiteTextOverride" >
+              <h3 id="Maxoneday"></h3>
+              
+              <p>PM2.5 สูงสุดต่อวัน</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-arrow-graph-up-right"></i>
+            </div>
+            <!-- <a href="#" class="small-box-footer"><font color="#E4AD24"> / </font></a> -->
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+          <!-- small box -->
+          <div class="small-box bg-secondary">
+            <div class="inner footerdatatext">
+              <h3 id="Averageday"></h3>
+
+              <p>PM2.5 เฉลี่ยต่อวัน</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-stats-bars"></i>
+            </div>
+            <!-- <a href="#" class="small-box-footer"><font color="#C62F3E"> / </font></a> -->
+          </div>
+        </div>
+        <!-- ./col -->
+      </div>
+        <div class="col-md-12 text-center">
+            <button id="dataonwork" onclick="ononework()" type="button"  class="btn btn-success">ทำงาน</button>
+            <button id="dataoffwork" onclick="offonework()" type="button"  class="btn btn-danger">ไม่ทำงาน</button>
+            <button id="dataautowork" onclick="onauto()" type="button"  class="btn btn-primary">Auto</button>
+        </div>
+      </section>
+    <!-- <pre id="object"></pre> -->
+    <style>
+      .footer {
+         position: fixed;
+         bottom: 0;
+         width: 100%;
+         height : 0%;
+         text-align: center;
+      }
+      </style>
+    <footer class="footer whiteTextOverride">
+      Phuket Rajabhat University by <a href="">PKRU</a>.
+    </footer>
+
+    <script src="/app/index.js"></script>
+</body>
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+  <script src="css/bootstrap-4.6.0-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>  
+</html>

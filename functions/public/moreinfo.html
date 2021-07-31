@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PM3003 graph </title>
+    <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="css/bootstrap-4.6.0-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/adminlte.min.css">
+    <link rel="stylesheet" href="/css/fontawesome-free/css/all.min.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+    <style>
+        body  {
+          background-image: url("images/bgimages.jpg");
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+        </style>
+</head>
+<body>
+    <header id="header" class="fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <div class="logo">
+                    <img  src="images/favicon.png" width="40"  height="40">
+                </div>
+                <button class="navbar-toggler"
+                    type="button" 
+                    data-toggle="collapse" 
+                    data-target="#navbarTogglerDemo02" 
+                    aria-controls="navbarTogglerDemo02"
+                    aria-expanded="false" 
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://iot-pms3003.web.app/">Homepage</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://iot-pms3003.web.app/moreinfo">Graph</a>
+                    </li>
+                    </ul>
+                </div>
+            </div>  
+        </nav>
+    </header>
+    <style>
+        .line-button{
+          margin-top: 100px;
+        }
+      </style>
+    <h5 class="d-flex justify-content-center whiteTextOverride line-button">Average Graph daily</h5>
+    <div class="col-md-12 text-center">
+    <iframe  width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1151490/charts/8?average=daily&bgcolor=%23ffffff&color=%23d62020&dynamic=true&type=line"></iframe>
+    </div>  
+<style>
+    .footer {
+       position: fixed;
+       bottom: 0;
+       width: 100%;
+       height : 25%;
+       text-align: center;
+    }
+    .whiteTextOverride{
+      color: white !important;
+    }
+    </style>
+  <footer class="footer whiteTextOverride">
+    Phuket Rajabhat University by <a href="">PKRU</a>.
+  </footer>
+
+</body>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <script src="css/bootstrap-4.6.0-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>  
+</html>
